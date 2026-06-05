@@ -29,10 +29,10 @@ public class StudentAttendanceEntity {
     @Column(name = "attendance_time", nullable = false, updatable = false)
     private LocalTime attendanceTime;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "\"MINUTE\"", nullable = false, updatable = false)
     private Integer minute;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "\"SECOND\"", nullable = false, updatable = false)
     private Integer second;
 
     @PrePersist
