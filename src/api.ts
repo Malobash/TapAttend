@@ -1,3 +1,6 @@
+// API Configuration
+const API_URL =  '/api'
+
 export type LoginPayload = {
   studentId: string
   password: string
@@ -40,7 +43,7 @@ export type TeacherLoginHistoryEmailResult = {
 }
 
 export async function loginStudent(payload: LoginPayload): Promise<LoginResult> {
-  const response = await fetch('/api/auth/login', {
+  const response = await fetch(`${API_URL}/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -58,7 +61,7 @@ export async function loginStudent(payload: LoginPayload): Promise<LoginResult> 
 }
 
 export async function registerStudent(payload: RegisterPayload): Promise<RegisterResult> {
-  const response = await fetch('/api/users', {
+  const response = await fetch(`${API_URL}/users`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -76,7 +79,7 @@ export async function registerStudent(payload: RegisterPayload): Promise<Registe
 
 export async function resetStudentAccount(studentId: string): Promise<void> {
   const encodedStudentId = encodeURIComponent(studentId)
-  const response = await fetch(`/api/users/by-student-id/${encodedStudentId}`, {
+  const response = await fetch(`${API_URL}/users/by-student-id/${encodedStudentId}`, {
     method: 'DELETE',
   })
 
@@ -89,7 +92,7 @@ export async function resetStudentAccount(studentId: string): Promise<void> {
 export async function sendTeacherLoginHistoryEmail(
   payload: TeacherLoginHistoryEmailPayload,
 ): Promise<TeacherLoginHistoryEmailResult> {
-  const response = await fetch('/api/users/teacher/login-history-email', {
+  const response = await fetch(`${API_URL}/users/teacher/login-history-email`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
